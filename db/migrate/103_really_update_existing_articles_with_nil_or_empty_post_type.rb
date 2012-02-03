@@ -4,6 +4,7 @@ class ReallyUpdateExistingArticlesWithNilOrEmptyPostType < ActiveRecord::Migrati
   end
 
   def self.up
+    =begin
     say_with_time "Really fix existing articles with no post type." do
       Content.find(:all,
                    :conditions => ['type = ?', 'Article']).each do |art|
@@ -14,6 +15,7 @@ class ReallyUpdateExistingArticlesWithNilOrEmptyPostType < ActiveRecord::Migrati
         end
       end
     end
+    =end
   end
 
   def self.down
