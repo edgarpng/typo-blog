@@ -14,21 +14,18 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>Temporary Issue | Designed by nodethirtythree + Templated.org</title>
-		<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
-		<link href="http://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<%= page_header %>
+		<title><%=h page_title %></title>
+  		<%= stylesheet_link_tag '/stylesheets/theme/style.css', :media => 'all' %>
+  		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Arvo' %>
+  		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Bitter' %>
 	</head>
 	<body>
 		<div id="outer">
 			<div id="header">
 				<div id="logo">
-					<h1>
-						<a href="#">Temporary Issue</a>
-					</h1>
+					<h1><%= link_to this_blog.blog_name, this_blog.base_url %></h1>
+            		<h2><%= this_blog.blog_subtitle %></h2>
 				</div>
 				<div id="search">
 					<form action="" method="post">
@@ -39,30 +36,21 @@
 				</div>
 				<div id="nav">
 					<ul>
-						<li class="first">
-							<a href="#">Homepage</a>
-						</li>
-						<li>
-							<a href="#">Our Services</a>
-						</li>
-						<li>
-							<a href="#">Our Portfolio</a>
-						</li>
-						<li>
-							<a href="#">About Us</a>
-						</li>
-						<li>
-							<a href="#">Blog</a>
-						</li>
-						<li class="last">
-							<a href="#">Contact Us</a>
-						</li>
+						<li class="first page_item <%= 'current_page_item' if (controller.controller_name == "articles" and controller.action_name == "index") %>">
+		                    <%= link_to _("Home"), this_blog.base_url %>
+		                </li>
+		                <li class="page_item <%= 'current_page_item' if (controller.action_name != 'index' and controller.action_name != 'view_page') %>">
+		                    <%= link_to _("Articles"), {:controller => "articles", :action => "archives"} if (controller.controller_name != "index" )%>
+		                </li>
+		                <li class="last page_item <%= 'current_page_item' if (controller.controller_name == "articles" and controller.action_name == "view_page" and params[:name].to_s == 'about') %>">
+		                    <%= link_to _("About"), this_blog.base_url + "/pages/about" %>
+		                </li>
 					</ul>
 				</div>
 			</div>
 			<div id="main">
 				<div id="content">
-					<div id="box1">
+					<!-- <div id="box1">
 						<h2>
 							Welcome to Temporary Issue
 						</h2><img class="left" src="images/pic1.jpg" width="180" height="220" alt="" />
@@ -111,9 +99,13 @@
 							</li>
 						</ul>
 					</div>
+					-->
+					<%= yield %>
+     				<%= javascript_tag 'show_dates_as_local_time()' %>
 					<br class="clear" />
 				</div>
 				<div id="sidebar2">
+					<!--
 					<h3>
 						Posuere pretium
 					</h3>
@@ -152,7 +144,10 @@
 							<a href="#">Nisl mus nulla morbi</a>
 						</li>
 					</ul>
+					-->
+					<%= render_sidebars %>
 				</div>
+				<!--
 				<div id="sidebar1">
 					<h3>
 						Curabitur ante
@@ -191,6 +186,7 @@
 					</ul>
 				</div>
 				<br class="clear" />
+				-->
 			</div>
 			<div id="footer">
 				<div id="footerContent">
@@ -248,7 +244,7 @@
 			</div>
 		</div>
 		<div id="copyright">
-			&copy; Your Site Name | Design: <a href="http://templated.org/free-css-templates/temporaryissue/">Temporary Issue</a> by <a href="http://nodethirtythree.com">nodethirtythree</a> + <a href="http://templated.org/">Templated.org</a> | Sponsor: <a href="http://www.4templates.com/">Business Website Templates</a>
+			&copy; <%= this_blog.blog_name %> | Design: <a href="http://templated.org/free-css-templates/temporaryissue/">Temporary Issue</a> by <a href="http://nodethirtythree.com">nodethirtythree</a> + <a href="http://templated.org/">Templated.org</a> | Sponsor: <a href="http://www.4templates.com/">Business Website Templates</a>
 		</div>
 	</body>
 </html>
