@@ -4,7 +4,7 @@
                     :loading  => "loading()",
                     :complete => "complete(request)",
                     :failure  => "failure(request)",
-                    :html     => {:id => 'commentform', :class => 'comments' } \
+                    :html     => {:id => 'commentform', :class => 'form-horizontal' } \
     do %>
 
 <div id="preview" style="display:none"></div>
@@ -44,8 +44,8 @@
                          :update => 'preview',
                          :complete => "Element.show('preview')",
                          :url    => @article.preview_comment_url,
-												 :html => {:class => 'submit'}) %>
-    <%= submit_tag _('Submit'), :id => 'form-submit-button', :class => 'submit', :onclick => "$('commentform').onsubmit();this.disabled=true;Element.hide('preview');return false;" %>
+												 :html => {:class => 'submit btn'}) %>
+    <%= submit_tag _('Submit'), :id => 'form-submit-button', :class => 'submit btn btn-primary', :onclick => "$('commentform').onsubmit();this.disabled=true;Element.hide('preview');return false;" %>
     <%= image_tag 'theme/spinner.gif', :id => 'comment_loading', :style => 'display:none' %>
   </p>
 </div>

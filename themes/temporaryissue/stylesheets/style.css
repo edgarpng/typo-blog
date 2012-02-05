@@ -30,7 +30,7 @@ a:hover {
 	text-decoration: none;
 }
 
-body, input {
+body, #header input {
 	font-size: 12pt;
 	line-height: 2em;
 	font-family: Georgia, serif;
@@ -306,4 +306,29 @@ ul {
 	width: 164px;
 	float: right;
 	padding: 0;
+}
+
+/********************Comments Form************************/
+#comment_body, #comment_author, #comment_email, #comment_url{
+	width: 500px;
+	max-width: 800px;
+}
+#comment_loading{
+	vertical-align: bottom;
+	padding-left: 10px;
+}
+/***Fix to avoid bootstrap interfering with search field****/
+#header input{
+	border: 0;
+	background: none;
+	color: #A2D5D8 !important;
+	height: 20px !important;
+	width: 293px !important;
+	line-height: 20px !important;
+	border-color: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	outline: 0 !important;
+	padding: 0px !important;
 }
